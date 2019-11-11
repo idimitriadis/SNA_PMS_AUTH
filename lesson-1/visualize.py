@@ -16,6 +16,8 @@ def draw_graph(G):
                      cmap=plt.cm.Blues)
     plt.axis('off')
     plt.tight_layout()
+    plt.savefig('karate_club.png')
     plt.show()
+
 
 draw_graph(G)

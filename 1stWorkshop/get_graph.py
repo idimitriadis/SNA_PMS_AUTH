@@ -15,6 +15,7 @@ def load_hashtags_brexit():
     file.close()
     print (nx.info(G)+'\n')
     nx.write_edgelist(G,'brexit.csv')
+    return G
 
 def load_karate_club():
     G = nx.karate_club_graph()
@@ -59,7 +60,7 @@ References
 """
     """Return the words example graph from the Stanford GraphBase"""
     import gzip
-    fh=gzip.open('words_dat.txt.gz','r')
+    fh=gzip.open('./words_dat.txt.gz','r')
     words=set()
     for line in fh.readlines():
         line = line.decode()
@@ -70,6 +71,6 @@ References
     return generate_graph(words)
 
 
-load_karate_club()
-words_graph()
-load_hashtags_brexit()
+# load_karate_club()
+# words_graph()
+# load_hashtags_brexit()

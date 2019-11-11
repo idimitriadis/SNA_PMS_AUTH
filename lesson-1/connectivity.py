@@ -1,14 +1,12 @@
 import networkx as nx
 import graphLoad
 
-
-
 '''CLUSTERING COEFFICIENT - tendency of nodes to create clusters'''
 
 def clus_coef_v1(G,each_node): #Fraction of pairs of the node's friends that are friends with each other
     if each_node==True:
         for node in G.nodes():
-            print (nx.clustering(G,node))
+            print ('node:'+str(node) + '-clus_coeff:'+str(nx.clustering(G,node)))
     print ('Average with v1:',nx.average_clustering(G))
 
 def clus_coef_v2(G): #Ratio of numbers of triangles and number of "open triads"
@@ -63,7 +61,7 @@ def find_eccentricity(G): #eccentricity: the largest distance between n and all 
     print ('Eccentricity: ',ecc)
     return ecc
 
-def find_radius(G):
+def find_radius(G): #minimum eccentricity
     try:
         rad = nx.radius(G)
     except nx.exception.NetworkXError:
@@ -81,7 +79,7 @@ def find_periphery(G): #set of nodes that have the eccentricity equal to the dia
     print ('Periphery: ',per)
     return per
 
-def find_central(G):
+def find_central(G): #set of nodes that have eccentricity equal to the radius
     try:
         cen = nx.center(G)
     except nx.exception.NetworkXError:
@@ -115,7 +113,7 @@ def get_nodes_cc(G,n):
     return (nx.node_connected_component(G,n))
 
 '''for directed graphs - when are they connected?
-A directed graph is strongly connected if for every pair of nodes u and v there is a directed path from u to v and 
+A directed graph is strongly connected if for every pair of nodes u and v there is a directed path from u to v and
 a directed path from v to u
 weakly connected: if replacing all directed edges to undirected produces a connected graph'''''
 
