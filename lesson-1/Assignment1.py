@@ -140,8 +140,8 @@ def answer_four():
     correlation_pearson = correlation_df.corr("pearson")
     print (correlation_pearson)
 
-# G = answer_one()
-# G = answer_two()
-# G = answer_three()
-# plot_graph(G,type=3)
-# answer_four()
+G = answer_one()
+G = answer_two()
+G = answer_three()
+plot_graph(G,type=3)
+answer_four()

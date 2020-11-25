@@ -95,7 +95,7 @@ def predict_salary_type():
     results = results.sort_values(ascending=False)
     return results
 
-
+# print (predict_salary_type())
 
 # ### Part 1B - New Connections Prediction
 #
@@ -157,5 +157,5 @@ def new_connections_predictions():
     return results
 
 
-# print (predict_salary_type())
-print (new_connections_predictions())
+
+# print (new_connections_predictions())
