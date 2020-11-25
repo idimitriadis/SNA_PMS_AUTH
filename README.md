@@ -12,7 +12,7 @@
 
 > Repo containing resources for the Social Networks Analysis course (PMS @ AUTh CS Dept.)
 
-Instructors: Ilias Dimitriadis (idimitriad@csd.auth.gr), Dimitra Karanatsiou (dimitrakd@csd.auth.gr)
+Instructors: Ilias Dimitriadis (idimitriad@csd.auth.gr)
 
 - [Python Installation](#python-installation)
     - [Windows](#windows)
