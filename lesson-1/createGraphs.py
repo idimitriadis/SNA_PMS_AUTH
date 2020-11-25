@@ -85,7 +85,7 @@ def create_graph_with_edge_attributes():
     return R
 
 
-# MULTIGRAPH
+# MULTIGRAPH - A NETWORK WHERE MULTIPLE EDGES CAN CONNECT THE SAME NODES
 def create_multigraph():
     M = nx.MultiGraph()
     M.add_edge('George', 'Lisa', relation='friend')
@@ -111,6 +111,7 @@ def create_multigraph():
 
 ####EDGE ATTRIBUTES###
 def edge_node_attributes(R):
+    print ('####all edge attributes####')
     # list all edges
     print(R.edges())
     # list all edges with attributes
@@ -131,19 +132,15 @@ def create_bipartite_graph():
     B = nx.Graph()
     B.add_nodes_from(['A', 'B', 'C', 'D', 'E'], bipartite=0)  # label one set of nodes 0
     B.add_nodes_from([1, 2, 3, 4], bipartite=1)  # label other set of nodes 1
-
     B.add_edges_from([('A', 1), ('B', 1), ('C', 1), ('D', 2), ('E', 3), ('E', 4)])  # adding edges
-
     # check if a graph is bipartite!!!
-
     print(bipartite.is_bipartite(B))
     # let's change something
     B.add_edge('A', 'B')
     print(bipartite.is_bipartite(B))
     B.remove_edge('A', 'B')
-
     # check if a set of nodes is part of bipartition -
-    X = set([1, 2, 3, 4])
+    X = {1, 2, 3, 4}
     print(bipartite.is_bipartite_node_set(B, X))
     return B
 
@@ -153,13 +150,12 @@ def create_projection(B):
     B.add_edges_from(
         [('D', 1), ('H', 1), ('B', 2), ('C', 2), ('D', 2), ('E', 2), ('G', 2), ('E', 3), ('F', 3), ('H', 3), ('J', 3),
          ('E', 4), ('I', 4), ('J', 4)])
-    X = set(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'])
-    N = set([1, 2, 3, 4])
+    X = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'}
+    N = {1, 2, 3, 4}
     P = bipartite.projected_graph(B, X)
     print(nx.info(P))
     P2 = bipartite.projected_graph(B, N)
     print(nx.info(P2))
-
     # if we want weights:
     P3 = bipartite.weighted_projected_graph(B, N)
     print(P3.edges(data=True))

@@ -62,7 +62,6 @@ def answer_two(multigraph):
 def answer_three(multigraph):
     # Your Code Here
     is_strongly = nx.is_strongly_connected(multigraph)
-
     is_connected = nx.is_weakly_connected(multigraph)
     # Alternative solution for part 2
     # g = nx.to_undirected(multigraph)
