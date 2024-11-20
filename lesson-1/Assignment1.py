@@ -94,9 +94,10 @@ def answer_three():
 def answer_four():
     # Your Code Here
     G = answer_two()
-    plot_graph(G,type=2)
+    # plot_graph(G,type=2)
     E = bipartite.weighted_projected_graph(G, employees)
-    plot_graph(E,type=1)
+    # plot_graph(E,type=1)
+    # return
     relationship_df = pd.read_csv('graphs/employee_relationships.txt', delim_whitespace=True, header=None, names=["E1", "E2", "Relationship"])
     print (relationship_df)
     relationship_g = nx.from_pandas_edgelist(relationship_df, "E1", "E2", edge_attr="Relationship")
@@ -111,7 +112,8 @@ def answer_four():
     correlation_pearson = correlation_df.corr("pearson")
     print (correlation_pearson)
 
-# G = answer_one()
-# G = answer_two()
-# # G = answer_three()
-# answer_four()
+if __name__ == "__main__":
+    G = answer_one()
+    G = answer_two()
+    G = answer_three()
+    answer_four()

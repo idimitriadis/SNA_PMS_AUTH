@@ -25,18 +25,13 @@ from sklearn.preprocessing import MinMaxScaler
 # First of all, your task is to create a node attributed graph using the files above.
 # To make sure that your Graph is identical to the expected one, the expected one is also provided below (see Lines 28-31)
 
-G = pickle.load(open('data/email_prediction.pkl','rb'))
-# print(nx.info(G))
-# for n in G.nodes(data=True):
-#     print (n)
+
 
 def create_the_email_graph():
     G = nx.Graph()
     G.add_edges_from(pickle.load(open('data/edge_list','rb')))
     G.add_nodes_from(pickle.load(open('data/node_list','rb')))
     return  G
-
-
 
 # ### Part 1A - Salary Prediction
 #
@@ -61,14 +56,6 @@ def in_management(node):
     else:
         return None
 
-def in_management(node):
-    management=node[1]['ManagementSalary']
-    if management==0:
-        return 0
-    elif management==1:
-        return 1
-    else:
-        return None
 
 def predict_salary_type():
     df = pd.DataFrame(index=G.nodes())
@@ -104,10 +91,6 @@ def predict_salary_type():
 # The index is a tuple that indicates a node pair that currently does not have a connection, while the
 # `Future Connection` column declares whether an edge between those nodes will exist in the future. A value of 1.0
 # indicates a future connection.
-
-future_connections = pd.read_csv('data/future_connections.csv', index_col=0, converters={0: eval})
-# print (future_connections.head(10))
-
 
 # Use network `G` and the `future_connections` variable to identify the edges in `future_connections` with missing
 # values and predict whether or not these edges will have a connection in the future.
@@ -156,6 +139,10 @@ def new_connections_predictions():
     results = results.sort_values(ascending=False)
     return results
 
-
-
-# print (new_connections_predictions())
+if __name__=='__main__':
+    G = create_the_email_graph()
+    salary = predict_salary_type()
+    print (salary)
+    future_connections = pd.read_csv('data/future_connections.csv', index_col=0, converters={0: eval})
+    print(future_connections.head(10))
+    print (new_connections_predictions())

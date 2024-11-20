@@ -12,9 +12,10 @@
 
 import networkx as nx
 
-G1 = nx.read_gml('data/university_friendships.gml')
-nx.write_edgelist(G1, "uni_friends.csv")
 
+# nx.write_edgelist(G1, "uni_friends.csv")
+# G = graphLoad.load_karate_club()
+# print (nx.voterank(G))
 # ### Question 1
 #
 # Calculate the degree centrality, closeness centrality and normalized betweeness centrality (excluding endpoints) of
@@ -26,7 +27,7 @@ nx.write_edgelist(G1, "uni_friends.csv")
 def answer_one():
     degree_centrality = nx.degree_centrality(G1)
     closeness_centrality = nx.closeness_centrality(G1)
-    betweenness_centrality = nx.betweenness_centrality(G1)
+    betweenness_centrality = nx.betweenness_centrality(G1,endpoints=False,normalized=True)
 
     return  (degree_centrality[100], closeness_centrality[100], betweenness_centrality[100])
 
@@ -52,6 +53,7 @@ def answer_two():
 
     return best_candidate[0]
 
+# print (answer_two())
 
 # ### Question 3
 #
@@ -71,6 +73,7 @@ def answer_three():
 
     return best_candidate[0]
 
+# print (answer_three())
 
 # ### Question 4
 #
@@ -89,14 +92,11 @@ def answer_four():
 
     return best_candidate[0]
 
-
+# print (answer_four())
 # ## Part 2
 #
 # Graph `G2` is a directed graph network of political blogs, in which nodes correspond to a single blog and edges
 # correspond to links between blogs. Utilize your knowledge of PageRank and HITS to answer the following questions (5-9)
-
-G2 = nx.read_gml('data/blogs.gml')
-nx.write_edgelist(G2, "blogs.csv")
 
 # ### Question 5
 #
@@ -172,5 +172,15 @@ def answer_nine():
 
     return result
 
-
-print ()
+if __name__ == "__main__":
+    G1 = nx.read_gml('data/university_friendships.gml')
+    G2 = nx.read_gml('data/blogs.gml')
+    print (answer_one())
+    print (answer_two())
+    print (answer_three())
+    print (answer_four())
+    print (answer_five())
+    print (answer_six())
+    print (answer_seven())
+    print (answer_eight())
+    print (answer_nine())

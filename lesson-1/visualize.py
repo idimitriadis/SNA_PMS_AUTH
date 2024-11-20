@@ -1,23 +1,22 @@
 import networkx as nx
 import matplotlib.pyplot as plt
-import graphLoad
 
 
-# G=graphLoad.load_karate_club()
+
 def draw_graph(G):
     plt.figure()
     pos = nx.spring_layout(G)
     edges = G.edges()
-    weights = [G[u][v]['weight'] for u, v in edges]
-    nx.draw_networkx(G, pos, edges=edges,width=weights)
+    # weights = [G[u][v]['weight'] for u, v in edges]
+    nx.draw_networkx(G, pos, edges=edges)
     plt.show()
 
 def draw_graph_colors(G):
     plt.figure(figsize=(10, 9))
     node_color = [G.degree(v) for v in G]
     node_size = [G.degree(v) * 100 for v in G]
-    # bet_cen = nx.betweenness_centrality(G)
-    # node_size =[bet_cen[v] * 10000 for v in G]
+    bet_cen = nx.betweenness_centrality(G)
+    node_size =[bet_cen[v] * 10000 for v in G]
     pos1 = nx.circular_layout(G)
     pos2 = nx.fruchterman_reingold_layout(G)
     pos = nx.spring_layout(G)
@@ -294,5 +293,8 @@ def les_miserables_graph():
     G.add_edge("MmeHucheloup", "Enjolras", weight=1)
     return G
 
-
+if __name__ == "__main__":
+    G=nx.karate_club_graph()
+    G = les_miserables_graph()
+    draw_graph_colors(G)
 
